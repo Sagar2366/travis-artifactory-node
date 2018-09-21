@@ -1,0 +1,5 @@
+#!/bin/bash
+docker login docker.artifactory -u $username -p $password
+docker pull docker.artifactory/nginx:latest
+docker images
+docker pull hello-world
