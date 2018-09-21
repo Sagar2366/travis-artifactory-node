@@ -67,10 +67,7 @@ before_install:
 cache:
   directories:
     - "node_modules"
-
-install:
-  - npm install http
-
+    
 services:
   - docker
 
