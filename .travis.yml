@@ -1,5 +1,8 @@
-    sudo: required
-    dist: trusty
+sudo: required
+dist: trusty
+language: node_js
+node_js:
+  - "8"
     # language: python
     # python:
     #   - "3.3"
@@ -7,14 +10,37 @@
     #   - "3.5"
     #   - "3.6"
 
-    services:
-      - docker
-    deploy:
-      provider: script
-      script: bash docker_push
-      on:
-        branch: master
-        
+before_install:
+  - npm install -g npm@latest
+
+cache:
+  directories:
+    - "node_modules"
+
+install:
+  - npm install http
+
+before_script :
+  - echo "Running execution script !!!"
+
+script :
+  - sonar-scanner
+
+after_script :
+  - echo "Running execution script successfully !!!"
+    
+before_deploy :
+  - echo "Starting deployment of node.js application on to azure provider"
+
+services:
+  - docker
+
+deploy:
+  provider: script
+  script: bash docker_push
+  on:
+    branch: master
+
     # before_install:
     #   - sudo apt-get -y install erlang
     #   - bash install_deps.sh
