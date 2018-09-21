@@ -1,6 +1,6 @@
     sudo: required
     dist: trusty
-    language: python
+    # language: python
     # python:
     #   - "3.3"
     #   - "3.4"
@@ -9,7 +9,12 @@
 
     services:
       - docker
-
+    deploy:
+      provider: script
+      script: bash docker_push
+      on:
+        branch: master
+        
     # before_install:
     #   - sudo apt-get -y install erlang
     #   - bash install_deps.sh
@@ -21,9 +26,3 @@
     # script:
     #   - $HOME/artifactory/artifactory/bin/artifactory.sh &
     #   - sleep 120
-
-    deploy:
-      provider: script
-      script: bash docker_push
-      on:
-        branch: master
