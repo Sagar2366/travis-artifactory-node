@@ -9,7 +9,7 @@
     before_install:
       - sudo apt-get -y install erlang
       - bash install_deps.sh
-    install: "python setup.py install"
+    #install: "python setup.py install"
     addons:
     cache:
       directories:
