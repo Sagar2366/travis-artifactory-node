@@ -23,8 +23,8 @@ install:
 before_script :
   - echo "Running execution script !!!"
 
-script :
-  - sonar-scanner
+# script :
+#   - sonar-scanner
 
 after_script :
   - echo "Running execution script successfully !!!"
